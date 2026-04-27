@@ -1,0 +1,63 @@
+{
+  "name": "@vaif/cli",
+  "version": "0.1.0",
+  "description": "VAIF CLI - Type generation and development tools",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "vaif": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "ora": "^8.0.1",
+    "chalk": "^5.3.0",
+    "prettier": "^3.2.0",
+    "pg": "^8.11.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/pg": "^8.11.0",
+    "typescript": "^5.8.3",
+    "tsup": "^8.5.1"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0.0"
+  },
+  "engines": {
+    "node": ">=19.0.0"
+  },
+  "keywords": [
+    "vaif",
+    "cli",
+    "codegen",
+    "typescript",
+    "types",
+    "database",
+    "schema"
+  ],
+  "author": "VAIF Technologies",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VAIF-TECH/vaif-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VAIF-TECH/vaif-cli/issues"
+  },
+  "homepage": "https://docs.vaif.studio/sdks/cli-reference",
+  "publishConfig": {
+    "access": "public"
+  }
+}
