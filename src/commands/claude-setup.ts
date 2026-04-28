@@ -950,7 +950,7 @@ export async function claudeSetup(options: ClaudeSetupOptions): Promise<void> {
       mcpServers: {
         "vaif-studio": {
           command: "npx",
-          args: ["@vaiftech/mcp"],
+          args: ["@vaif/mcp"],
           env: {
             VAIF_API_KEY: apiKey,
             VAIF_PROJECT_ID: projectId,

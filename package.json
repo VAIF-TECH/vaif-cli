@@ -1,7 +1,7 @@
 {
   "name": "@vaif/cli",
-  "version": "0.1.0",
-  "description": "VAIF CLI - Type generation and development tools",
+  "version": "0.1.1",
+  "description": "VAIF Studio CLI — scaffold projects, manage schemas, deploy functions, generate types, and configure Claude Code integration",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -10,7 +10,8 @@
     "vaif": "dist/cli.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "schemas"
   ],
   "scripts": {
     "build": "tsup",

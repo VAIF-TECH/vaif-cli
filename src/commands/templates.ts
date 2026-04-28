@@ -68,8 +68,7 @@ export const TEMPLATES: Record<string, TemplateDefinition> = {
   },
   "dependencies": {
     "@vaif/client": "^0.3.0",
-    "@vaiftech/auth": "^1.0.0",
-    "@vaiftech/react": "^1.0.0",
+    "@vaif/react": "^0.1.0",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -121,7 +120,7 @@ export default nextConfig;
       {
         path: "app/layout.tsx",
         content: `import type { Metadata } from "next";
-import { VaifProvider } from "@vaiftech/react";
+import { VaifProvider } from "@vaif/react";
 import { vaif } from "@/lib/vaif";
 import "./globals.css";
 
@@ -248,7 +247,7 @@ A full-stack Next.js application powered by [VAIF Studio](https://vaif.studio), 
 3. **Install and log in to the VAIF CLI**
 
    \\\`\\\`\\\`bash
-   npm install -g @vaiftech/cli
+   npm install -g @vaif/cli
    vaif login
    \\\`\\\`\\\`
 
@@ -339,7 +338,6 @@ export default function Home() {
           path: "middleware.ts",
           content: `import { NextResponse, type NextRequest } from "next/server";
 import { createVaifClient } from "@vaif/client";
-import { authMiddleware } from "@vaiftech/auth/nextjs";
 
 const protectedRoutes = ["/dashboard", "/settings", "/api/protected"];
 
@@ -647,7 +645,7 @@ export const posts = pgTable("posts", {
         },
       ],
     },
-    dependencies: ["@vaif/client", "@vaiftech/auth", "@vaiftech/react", "next", "react", "react-dom"],
+    dependencies: ["@vaif/client", "@vaif/react", "next", "react", "react-dom"],
     devDependencies: ["@types/node", "@types/react", "@types/react-dom", "typescript"],
     postInstructions: [
       "cd my-vaif-app",
@@ -678,7 +676,7 @@ export const posts = pgTable("posts", {
   },
   "dependencies": {
     "@vaif/client": "^0.3.0",
-    "@vaiftech/react": "^1.0.0",
+    "@vaif/react": "^0.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.0.0"
@@ -761,7 +759,7 @@ export default defineConfig({
         content: `import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { VaifProvider } from "@vaiftech/react";
+import { VaifProvider } from "@vaif/react";
 import { vaif } from "./lib/vaif";
 import App from "./App";
 
@@ -874,7 +872,7 @@ A single-page React application built with [Vite](https://vite.dev/) and powered
 3. **Install and log in to the VAIF CLI**
 
    \\\`\\\`\\\`bash
-   npm install -g @vaiftech/cli
+   npm install -g @vaif/cli
    vaif login
    \\\`\\\`\\\`
 
@@ -1300,7 +1298,7 @@ export const posts = pgTable("posts", {
         },
       ],
     },
-    dependencies: ["@vaif/client", "@vaiftech/react", "react", "react-dom", "react-router-dom"],
+    dependencies: ["@vaif/client", "@vaif/react", "react", "react-dom", "react-router-dom"],
     devDependencies: ["@types/react", "@types/react-dom", "@vitejs/plugin-react", "typescript", "vite"],
     postInstructions: [
       "cd my-vaif-app",
@@ -1391,7 +1389,7 @@ In Xcode: **File → Add Package Dependencies…**
 
 Enter the repository URL:
 \`\`\`
-https://github.com/vaif-technologies/vaif-swift
+https://github.com/VAIF-TECH/vaif-swift
 \`\`\`
 
 Select the **VaifClient** library and add it to your target.
@@ -1431,7 +1429,7 @@ struct ContentView: View {
 Run the VAIF CLI to generate Swift models from your schema:
 
 \`\`\`bash
-npx @vaiftech/cli generate --output ./Models/Database.swift --lang swift
+npx @vaif/cli generate --output ./Models/Database.swift --lang swift
 \`\`\`
 `,
       },
@@ -1446,7 +1444,7 @@ An iOS/macOS application powered by [VAIF Studio](https://vaif.studio), using th
 - Xcode 15 or later
 - iOS 17+ / macOS 14+ deployment target
 - A VAIF Studio account — sign up at <https://vaif.studio>
-- (Optional) VAIF CLI for type generation: \\\`npm install -g @vaiftech/cli\\\`
+- (Optional) VAIF CLI for type generation: \\\`npm install -g @vaif/cli\\\`
 
 ## Setup
 
@@ -1457,7 +1455,7 @@ An iOS/macOS application powered by [VAIF Studio](https://vaif.studio), using th
    Enter the repository URL:
 
    \\\`\\\`\\\`
-   https://github.com/vaif-technologies/vaif-swift
+   https://github.com/VAIF-TECH/vaif-swift
    \\\`\\\`\\\`
 
    Select the **VaifClient** library and add it to your target.
@@ -1483,7 +1481,7 @@ An iOS/macOS application powered by [VAIF Studio](https://vaif.studio), using th
 3. **Install and log in to the VAIF CLI** (for type generation)
 
    \\\`\\\`\\\`bash
-   npm install -g @vaiftech/cli
+   npm install -g @vaif/cli
    vaif login
    \\\`\\\`\\\`
 
@@ -1537,7 +1535,7 @@ Full documentation is available at <https://docs.vaif.studio>.
       },
     ],
     postInstructions: [
-      "Add the VaifClient Swift package from https://github.com/vaif-technologies/vaif-swift",
+      "Add the VaifClient Swift package from https://github.com/VAIF-TECH/vaif-swift",
       "Add VAIF_PROJECT_ID and VAIF_API_KEY to your Xcode scheme environment",
       "See README-VAIF.md for full setup instructions",
     ],
@@ -1564,7 +1562,7 @@ Full documentation is available at <https://docs.vaif.studio>.
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.0",
-    "@vaiftech/sdk-expo": "^1.0.0",
+    "@vaif/client": "^0.3.0",
     "expo": "~52.0.0",
     "expo-router": "~4.0.0",
     "react": "^19.0.0",
@@ -1596,16 +1594,12 @@ Full documentation is available at <https://docs.vaif.studio>.
       {
         path: "app/_layout.tsx",
         content: `import { Stack } from "expo-router";
-import { VaifProvider } from "@vaiftech/sdk-expo";
-import { vaif } from "../lib/vaif";
 
 export default function RootLayout() {
   return (
-    <VaifProvider client={vaif}>
-      <Stack>
-        <Stack.Screen name="index" options={{ title: "Home" }} />
-      </Stack>
-    </VaifProvider>
+    <Stack>
+      <Stack.Screen name="index" options={{ title: "Home" }} />
+    </Stack>
   );
 }
 `,
@@ -1632,14 +1626,11 @@ const styles = StyleSheet.create({
       },
       {
         path: "lib/vaif.ts",
-        content: `import { createExpoClient } from "@vaiftech/sdk-expo";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+        content: `import { Vaif } from "@vaif/client";
 
-export const vaif = createExpoClient({
-  projectId: process.env.EXPO_PUBLIC_VAIF_PROJECT_ID!,
+export const vaif = new Vaif({
+  baseURL: process.env.EXPO_PUBLIC_VAIF_API_URL ?? "https://api.vaif.studio",
   apiKey: process.env.EXPO_PUBLIC_VAIF_API_KEY!,
-  storage: AsyncStorage,
-  realtime: { enabled: true },
 });
 `,
       },
@@ -1696,7 +1687,7 @@ A React Native / Expo mobile application powered by [VAIF Studio](https://vaif.s
 3. **Install and log in to the VAIF CLI**
 
    \\\`\\\`\\\`bash
-   npm install -g @vaiftech/cli
+   npm install -g @vaif/cli
    vaif login
    \\\`\\\`\\\`
 
@@ -2068,7 +2059,7 @@ export const posts = pgTable("posts", {
         },
       ],
     },
-    dependencies: ["@vaiftech/sdk-expo", "@react-native-async-storage/async-storage", "expo", "expo-router", "react", "react-native"],
+    dependencies: ["@vaif/client", "@react-native-async-storage/async-storage", "expo", "expo-router", "react", "react-native"],
     postInstructions: [
       "cd my-vaif-app",
       "npm install",
@@ -2199,7 +2190,7 @@ A Flutter application powered by [VAIF Studio](https://vaif.studio), with Dart c
 - [Flutter SDK](https://flutter.dev/docs/get-started/install) 3.5 or later
 - Dart SDK (included with Flutter)
 - A VAIF Studio account — sign up at <https://vaif.studio>
-- (Optional) VAIF CLI for type generation: \\\`npm install -g @vaiftech/cli\\\`
+- (Optional) VAIF CLI for type generation: \\\`npm install -g @vaif/cli\\\`
 
 ## Setup
 
@@ -2220,7 +2211,7 @@ A Flutter application powered by [VAIF Studio](https://vaif.studio), with Dart c
 3. **Install and log in to the VAIF CLI** (for schema and type generation)
 
    \\\`\\\`\\\`bash
-   npm install -g @vaiftech/cli
+   npm install -g @vaif/cli
    vaif login
    \\\`\\\`\\\`
 
@@ -2551,7 +2542,7 @@ A FastAPI backend application powered by [VAIF Studio](https://vaif.studio), wit
 - [Python](https://www.python.org/) 3.10 or later
 - pip (included with Python)
 - A VAIF Studio account — sign up at <https://vaif.studio>
-- (Optional) VAIF CLI for schema management: \\\`npm install -g @vaiftech/cli\\\`
+- (Optional) VAIF CLI for schema management: \\\`npm install -g @vaif/cli\\\`
 
 ## Setup
 
@@ -2579,7 +2570,7 @@ A FastAPI backend application powered by [VAIF Studio](https://vaif.studio), wit
 4. **Install and log in to the VAIF CLI**
 
    \\\`\\\`\\\`bash
-   npm install -g @vaiftech/cli
+   npm install -g @vaif/cli
    vaif login
    \\\`\\\`\\\`
 
@@ -2894,7 +2885,7 @@ import (
 \t"fmt"
 \t"os"
 
-\tvaifclient "github.com/vaif-technologies/vaif-go"
+\tvaifclient "github.com/VAIF-TECH/vaif-go"
 )
 
 var Client *vaifclient.Client
@@ -2930,7 +2921,7 @@ go 1.22
 
 require (
 \tgithub.com/joho/godotenv v1.5.1
-\tgithub.com/vaif-technologies/vaif-go v1.0.0
+\tgithub.com/VAIF-TECH/vaif-go v1.0.0
 )
 `,
       },
@@ -2962,7 +2953,7 @@ A Go backend API powered by [VAIF Studio](https://vaif.studio), with HTTP handle
 
 - [Go](https://go.dev/dl/) 1.22 or later
 - A VAIF Studio account — sign up at <https://vaif.studio>
-- (Optional) VAIF CLI for schema management: \\\`npm install -g @vaiftech/cli\\\`
+- (Optional) VAIF CLI for schema management: \\\`npm install -g @vaif/cli\\\`
 
 ## Setup
 
@@ -2983,7 +2974,7 @@ A Go backend API powered by [VAIF Studio](https://vaif.studio), with HTTP handle
 3. **Install and log in to the VAIF CLI**
 
    \\\`\\\`\\\`bash
-   npm install -g @vaiftech/cli
+   npm install -g @vaif/cli
    vaif login
    \\\`\\\`\\\`
 
@@ -3058,7 +3049,7 @@ import (
 \t"strings"
 
 \t"myapp/vaif"
-\tvaifclient "github.com/vaif-technologies/vaif-go"
+\tvaifclient "github.com/VAIF-TECH/vaif-go"
 )
 
 func AuthMiddleware(next http.Handler) http.Handler {
@@ -3344,7 +3335,7 @@ A simple React todo application for learning [VAIF Studio](https://vaif.studio) 
 3. **Install and log in to the VAIF CLI**
 
    \\\`\\\`\\\`bash
-   npm install -g @vaiftech/cli
+   npm install -g @vaif/cli
    vaif login
    \\\`\\\`\\\`
 
@@ -3472,7 +3463,7 @@ export const posts = pgTable("posts", {
         },
       ],
     },
-    dependencies: ["@vaif/client", "@vaiftech/react"],
+    dependencies: ["@vaif/client", "@vaif/react"],
     postInstructions: [
       "Copy .env.example to .env and fill in your project credentials",
       "Create a 'todos' table in your VAIF dashboard with columns: id (uuid), title (text), done (boolean), created_at (timestamptz)",
@@ -3679,7 +3670,7 @@ A React chat application with live messaging powered by [VAIF Studio](https://va
 3. **Install and log in to the VAIF CLI**
 
    \\\`\\\`\\\`bash
-   npm install -g @vaiftech/cli
+   npm install -g @vaif/cli
    vaif login
    \\\`\\\`\\\`
 
@@ -3821,7 +3812,7 @@ export const posts = pgTable("posts", {
         },
       ],
     },
-    dependencies: ["@vaif/client", "@vaiftech/react"],
+    dependencies: ["@vaif/client", "@vaif/react"],
     postInstructions: [
       "Copy .env.example to .env and fill in your project credentials",
       "Create a 'messages' table with columns: id (uuid), content (text), user_id (text), username (text), channel_id (text), created_at (timestamptz)",
@@ -4055,7 +4046,7 @@ A full SaaS starter kit powered by [VAIF Studio](https://vaif.studio) with authe
 3. **Install and log in to the VAIF CLI**
 
    \\\`\\\`\\\`bash
-   npm install -g @vaiftech/cli
+   npm install -g @vaif/cli
    vaif login
    \\\`\\\`\\\`
 
@@ -4193,7 +4184,7 @@ export const posts = pgTable("posts", {
         },
       ],
     },
-    dependencies: ["@vaif/client", "@vaiftech/auth", "@vaiftech/react"],
+    dependencies: ["@vaif/client", "@vaif/react"],
     postInstructions: [
       "Copy .env.example to .env.local and fill in your project credentials",
       "Create 'teams' and 'team_members' tables in your VAIF dashboard",
@@ -4389,7 +4380,7 @@ An API-first e-commerce setup powered by [VAIF Studio](https://vaif.studio) with
 3. **Install and log in to the VAIF CLI**
 
    \\\`\\\`\\\`bash
-   npm install -g @vaiftech/cli
+   npm install -g @vaif/cli
    vaif login
    \\\`\\\`\\\`
 
@@ -4525,7 +4516,7 @@ export const posts = pgTable("posts", {
         },
       ],
     },
-    dependencies: ["@vaif/client", "@vaiftech/auth"],
+    dependencies: ["@vaif/client"],
     postInstructions: [
       "Copy .env.example to .env.local and fill in your project credentials",
       "Create a 'product-images' storage bucket in your VAIF dashboard",
@@ -4562,9 +4553,9 @@ export function listTemplates(): void {
 
   console.log("");
   console.log(chalk.gray("Usage:"));
-  console.log(chalk.gray(`  npx @vaiftech/cli init --template <name>`));
-  console.log(chalk.gray(`  npx @vaiftech/cli init -t nextjs-fullstack`));
-  console.log(chalk.gray(`  npx @vaiftech/cli init -t react-spa --features auth,database,realtime`));
+  console.log(chalk.gray(`  npx @vaif/cli init --template <name>`));
+  console.log(chalk.gray(`  npx @vaif/cli init -t nextjs-fullstack`));
+  console.log(chalk.gray(`  npx @vaif/cli init -t react-spa --features auth,database,realtime`));
   console.log("");
   console.log(chalk.gray("Available features: auth, database, realtime, storage, functions"));
   console.log("");
@@ -4786,7 +4777,7 @@ export async function scaffoldTemplate(
 
   // ── Inject feature-specific dependencies into package.json ────────
   const featureDeps: Record<FeatureName, Record<string, string>> = {
-    auth: { "@vaiftech/auth": "^1.0.0" },
+    auth: {},
     database: {},
     realtime: {},
     storage: {},

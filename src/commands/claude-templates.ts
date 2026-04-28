@@ -120,7 +120,7 @@ const subscription = vaif.realtime
 
 | Mode | Header | Used For |
 |------|--------|----------|
-| API Key | \`x-vaif-key: vk_xxx\` | Data-plane: CRUD, storage, functions |
+| API Key | \`x-vaif-key: vaif_xxx\` | Data-plane: CRUD, storage, functions |
 | JWT Token | \`Authorization: Bearer <jwt>\` | Control-plane: schema, project management |
 
 ## Environment Variables
@@ -128,7 +128,7 @@ const subscription = vaif.realtime
 \`\`\`bash
 VAIF_API_URL=https://api.vaif.studio
 VAIF_PROJECT_ID=proj_xxx
-VAIF_API_KEY=vk_xxx
+VAIF_API_KEY=vaif_xxx
 \`\`\`
 `,
 
@@ -139,7 +139,7 @@ This project uses **VAIF Studio** as its backend for a SaaS application.
 ## SDK Setup
 
 \`\`\`bash
-npm install @vaif/client @vaiftech/react
+npm install @vaif/client @vaif/react
 \`\`\`
 
 \`\`\`typescript
@@ -252,7 +252,7 @@ CREATE TABLE invites (
 ## API Key Scoping
 
 \`\`\`
-x-vaif-key: vk_xxx          → Data-plane (CRUD, storage, functions)
+x-vaif-key: vaif_xxx          → Data-plane (CRUD, storage, functions)
 Authorization: Bearer <jwt>   → Control-plane (schema, project management)
 \`\`\`
 
@@ -261,7 +261,7 @@ Authorization: Bearer <jwt>   → Control-plane (schema, project management)
 \`\`\`bash
 VAIF_API_URL=https://api.vaif.studio
 VAIF_PROJECT_ID=proj_xxx
-VAIF_API_KEY=vk_xxx
+VAIF_API_KEY=vaif_xxx
 STRIPE_SECRET_KEY=sk_live_xxx
 STRIPE_WEBHOOK_SECRET=whsec_xxx
 \`\`\`
@@ -275,25 +275,16 @@ This project uses **VAIF Studio** as its backend for a mobile application (React
 
 ### React Native / Expo
 \`\`\`bash
-npm install @vaiftech/sdk-expo
+npm install @vaif/client
 \`\`\`
 
 \`\`\`typescript
-import { VaifProvider, useVaif } from "@vaiftech/sdk-expo";
+import { Vaif } from "@vaif/client";
 
-export default function App() {
-  return (
-    <VaifProvider
-      config={{
-        baseUrl: "https://api.vaif.studio",
-        projectId: "proj_xxx",
-        apiKey: "vk_xxx",
-      }}
-    >
-      <MainApp />
-    </VaifProvider>
-  );
-}
+const vaif = new Vaif({
+  baseURL: "https://api.vaif.studio",
+  apiKey: "vaif_xxx",
+});
 \`\`\`
 
 ### Flutter / Dart
@@ -309,21 +300,21 @@ import 'package:vaif_client/vaif_client.dart';
 final vaif = VaifClient(
   baseUrl: 'https://api.vaif.studio',
   projectId: 'proj_xxx',
-  apiKey: 'vk_xxx',
+  apiKey: 'vaif_xxx',
 );
 \`\`\`
 
 ### Swift / iOS
 \`\`\`swift
 // Package.swift
-.package(url: "https://github.com/vaifllc/vaif-swift", from: "0.2.0")
+.package(url: "https://github.com/VAIF-TECH/vaif-swift", from: "0.2.0")
 
 import VaifClient
 
 let vaif = VaifClient(
     baseUrl: "https://api.vaif.studio",
     projectId: "proj_xxx",
-    apiKey: "vk_xxx"
+    apiKey: "vaif_xxx"
 )
 \`\`\`
 
@@ -431,15 +422,13 @@ await vaif.from("messages").insert({
 The Expo SDK automatically stores auth tokens in SecureStore (iOS Keychain / Android Keystore).
 
 \`\`\`typescript
-const { useAuth } = require("@vaiftech/sdk-expo");
+import { Vaif } from "@vaif/client";
 
-function LoginScreen() {
-  const { signIn, signUp, user, loading } = useAuth();
+const vaif = new Vaif({ baseURL: "https://api.vaif.studio", apiKey: "vaif_xxx" });
 
-  const handleLogin = async () => {
-    const { error } = await signIn({ email, password });
-    if (error) Alert.alert("Error", error.message);
-  };
+async function login(email: string, password: string) {
+  const { token } = await vaif.auth.login({ email, password });
+  // Persist token via expo-secure-store / SecureStore
 }
 \`\`\`
 
@@ -448,9 +437,9 @@ function LoginScreen() {
 \`\`\`bash
 VAIF_API_URL=https://api.vaif.studio
 VAIF_PROJECT_ID=proj_xxx
-VAIF_API_KEY=vk_xxx
+VAIF_API_KEY=vaif_xxx
 EXPO_PUBLIC_VAIF_PROJECT_ID=proj_xxx
-EXPO_PUBLIC_VAIF_API_KEY=vk_xxx
+EXPO_PUBLIC_VAIF_API_KEY=vaif_xxx
 \`\`\`
 `,
 
@@ -681,7 +670,7 @@ await vaif.from("products").update({ images }).eq("id", productId);
 \`\`\`bash
 VAIF_API_URL=https://api.vaif.studio
 VAIF_PROJECT_ID=proj_xxx
-VAIF_API_KEY=vk_xxx
+VAIF_API_KEY=vaif_xxx
 STRIPE_SECRET_KEY=sk_live_xxx
 STRIPE_PUBLISHABLE_KEY=pk_live_xxx
 STRIPE_WEBHOOK_SECRET=whsec_xxx

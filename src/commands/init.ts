@@ -16,7 +16,7 @@ interface InitOptions {
 }
 
 const defaultConfig = {
-  $schema: "https://vaif.studio/schemas/config.json",
+  $schema: "https://raw.githubusercontent.com/VAIF-TECH/vaif-cli/main/schemas/vaif-config.schema.json",
   projectId: "",
   database: {
     url: "${DATABASE_URL}",
@@ -183,7 +183,7 @@ function detectProjectType(): ClaudeTemplateType | null {
     };
 
     // Mobile detection
-    if (deps["expo"] || deps["react-native"] || deps["@vaiftech/sdk-expo"]) return "mobile";
+    if (deps["expo"] || deps["react-native"]) return "mobile";
     if (fs.existsSync(path.resolve("pubspec.yaml"))) return "mobile";
     if (fs.existsSync(path.resolve("Package.swift")) || fs.existsSync(path.resolve("*.xcodeproj"))) return "mobile";
 
